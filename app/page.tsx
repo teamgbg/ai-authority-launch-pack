@@ -16,7 +16,7 @@ export default function Home() {
               playsInline
               className="h-full w-full object-cover"
             >
-              <source src="/videos/hero-background.mp4" type="video/mp4" />
+              <source src="/videos/hero-background-compressed.mp4" type="video/mp4" />
             </video>
             {/* Video Overlay for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-white" />
@@ -25,33 +25,28 @@ export default function Home() {
           {/* Hero Content */}
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-4xl pt-32 pb-24 text-center">
-            {/* Badge */}
-            <div className="mb-8 inline-flex items-center rounded-full border border-[#F83600]/20 bg-[#F83600]/5 px-4 py-2">
+              {/* Badge */}
+              <div className="mb-8 inline-flex items-center rounded-full border border-[#F83600]/20 bg-[#F83600]/5 px-4 py-2">
               <span className="text-sm font-medium text-[#F83600]">
                 ✨ Your Personal Brand in 10 Minutes
               </span>
-            </div>
+              </div>
 
-            {/* Main Headline */}
-            <h1 className="mb-6 text-5xl font-bold tracking-tight text-white drop-shadow-2xl sm:text-6xl lg:text-7xl">
+              {/* Main Headline */}
+              <h1 className="mb-6 text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
               Launch Your{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 bg-gradient-to-r from-[#F83600] to-[#FF6B3D] bg-clip-text text-transparent">
-                  Brand Authority
-                </span>
-                <span className="absolute bottom-2 left-0 h-3 w-full bg-[#F83600]/20 -z-10" />
-              </span>
+              <span className="text-[#F83600]">Brand Authority</span>
               {" "}in Minutes
-            </h1>
+              </h1>
 
-            {/* Subheadline */}
-            <p className="mx-auto mb-12 max-w-2xl text-lg leading-8 text-white/90 drop-shadow-lg sm:text-xl">
+              {/* Subheadline */}
+              <p className="mx-auto mb-12 max-w-2xl text-lg leading-8 text-white/90 drop-shadow-lg sm:text-xl">
               Get your AI-powered Personal Brand One-Pager + 3 Ready-to-Post Social Captions —
               completely free. Perfect for established experts ready to shine online.
-            </p>
+              </p>
 
-            {/* CTA Button */}
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              {/* CTA Button */}
+              <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <button
                 className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-[#F83600] px-8 font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#E02F00] hover:shadow-xl hover:scale-105 active:scale-95"
                 onClick={() => {
@@ -81,18 +76,18 @@ export default function Home() {
               <button className="inline-flex h-14 items-center justify-center rounded-full border-2 border-[#1D2127]/20 bg-white px-8 font-semibold text-[#1D2127] transition-all duration-300 hover:border-[#F83600]/40 hover:bg-[#F83600]/5">
                 See How It Works
               </button>
-            </div>
+              </div>
 
-            {/* Social Proof */}
-            <div className="mt-12 flex items-center justify-center gap-2 text-sm text-white/80 drop-shadow-md">
+              {/* Social Proof */}
+              <div className="mt-12 flex items-center justify-center gap-2 text-sm text-white/80 drop-shadow-md">
               <div className="flex -space-x-2">
                 <div className="h-8 w-8 rounded-full border-2 border-white bg-gradient-to-br from-[#F83600] to-[#FF6B3D]" />
                 <div className="h-8 w-8 rounded-full border-2 border-white bg-gradient-to-br from-[#1D2127] to-[#3D4147]" />
                 <div className="h-8 w-8 rounded-full border-2 border-white bg-gradient-to-br from-[#F83600] to-[#FF6B3D]" />
               </div>
               <span className="font-medium">Join 500+ experts who launched their brand</span>
+              </div>
             </div>
-          </div>
           </div>
         </div>
 

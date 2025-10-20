@@ -14,7 +14,7 @@ export default function AlternatePage() {
             playsInline
             className="h-full w-full object-cover"
           >
-            <source src="/videos/hero-background.mp4" type="video/mp4" />
+            <source src="/videos/hero-background-compressed.mp4" type="video/mp4" />
           </video>
           {/* Video Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-base-100" />
@@ -31,7 +31,7 @@ export default function AlternatePage() {
             </div>
 
             {/* Main Headline with DaisyUI Typography */}
-            <h1 className="text-5xl font-bold mb-6 sm:text-6xl lg:text-7xl text-white drop-shadow-2xl">
+            <h1 className="text-5xl font-bold mb-6 sm:text-6xl lg:text-7xl text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
               Launch Your{" "}
               <span className="text-[#F83600]">Brand Authority</span>
               {" "}in Minutes
