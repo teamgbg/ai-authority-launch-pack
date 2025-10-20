@@ -22,7 +22,7 @@ export default function Home() {
               Launch Your{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 bg-gradient-to-r from-[#F83600] to-[#FF6B3D] bg-clip-text text-transparent">
-                  Authority Brand
+                  Brand Authority
                 </span>
                 <span className="absolute bottom-2 left-0 h-3 w-full bg-[#F83600]/20 -z-10" />
               </span>

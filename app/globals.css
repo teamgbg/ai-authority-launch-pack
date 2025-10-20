@@ -1,13 +1,21 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: light --default;
-}
+@plugin "daisyui";
 
 :root {
   --primary: #F83600;
   --black: #000000;
   --dark-gray: #1D2127;
   --white: #FFFFFF;
+
+  /* DaisyUI color overrides */
+  --p: 16 214 0; /* #F83600 in HSL */
+  --pc: 0 0 100; /* white text on primary */
+  --s: 221 22 15; /* #1D2127 secondary */
+  --sc: 0 0 100; /* white text on secondary */
+  --b1: 0 0 100; /* base-100 white */
+  --b2: 0 0 96; /* base-200 light gray */
+  --b3: 0 0 90; /* base-300 gray */
+  --bc: 221 22 15; /* base-content dark gray */
 }
 
 @theme inline {
@@ -17,11 +25,6 @@
   --color-white: var(--white);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-
-  /* DaisyUI color overrides */
-  --color-primary: #F83600;
-  --color-base-100: #FFFFFF;
-  --color-base-content: #1D2127;
 }
 
 body {

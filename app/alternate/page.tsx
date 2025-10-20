@@ -18,7 +18,7 @@ export default function AlternatePage() {
             {/* Main Headline with DaisyUI Typography */}
             <h1 className="text-5xl font-bold mb-6 sm:text-6xl lg:text-7xl">
               Launch Your{" "}
-              <span className="text-primary">Authority Brand</span>
+              <span className="text-[#F83600]">Brand Authority</span>
               {" "}in Minutes
             </h1>
 
