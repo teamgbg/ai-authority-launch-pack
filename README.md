@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Authority Launch Pack
 
-## Getting Started
+A three-step funnel to help established female experts (45-60) launch their authority brand online.
 
-First, run the development server:
+## 🚀 Features
+
+### Step 1: Free AI Authority Launch Pack (In Progress)
+- Conversational AI agent that collects user information naturally
+- AI-generated Personal Brand One-Pager (PDF)
+- 3 ready-to-post social media captions
+- Delivered via email within minutes
+
+### Step 2: $99 Upsell (Planned)
+- Personal Brand Landing Page (live website)
+- 1-month CRM access via GoHighLevel
+- 48-hour delivery
+
+### Step 3: Authority Launch Intensive (Planned)
+- Full 90-day done-with-you authority launch program
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router + Turbopack
+- **Styling**: Tailwind CSS 4
+- **Runtime**: Bun
+- **AI**: Claude 3.5 Haiku (Anthropic API)
+- **Deployment**: Vercel
+
+## 🎨 Brand Colors
+
+- Primary: `#F83600` (vibrant orange)
+- Black: `#000000`
+- Dark Gray: `#1D2127`
+- White: `#FFFFFF`
+
+## 🚀 Getting Started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+bun install
+
+# Run development server
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the landing page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
+2. Import the `teamgbg/ai-authority-launch-pack` repository
+3. Configure build settings:
+   - **Framework**: Next.js
+   - **Build Command**: `bun run build`
+4. Add environment variables (when ready):
+   - `ANTHROPIC_API_KEY` for Claude API
+5. Click Deploy
 
-## Learn More
+## 🎯 Current Status
 
-To learn more about Next.js, take a look at the following resources:
+✅ Landing page with brand colors
+⏳ Conversational AI agent (next)
+⏳ Brand One-Pager generation
+⏳ Social caption generation
+⏳ PDF & email delivery
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ for experts ready to launch their authority brand.
