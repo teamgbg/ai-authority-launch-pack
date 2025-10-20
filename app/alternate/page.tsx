@@ -3,9 +3,24 @@
 export default function AlternatePage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section - DaisyUI Version */}
-      <div className="hero min-h-screen bg-gradient-to-br from-primary/5 via-base-100 to-base-300/20">
-        <div className="hero-content text-center">
+      {/* Hero Section - DaisyUI Version with Video Background */}
+      <div className="hero min-h-screen relative overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover"
+          >
+            <source src="/videos/hero-background.mp4" type="video/mp4" />
+          </video>
+          {/* Video Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-base-100" />
+        </div>
+
+        <div className="hero-content text-center relative z-10">
           <div className="max-w-3xl">
             {/* Badge */}
             <div className="badge badge-primary badge-lg gap-2 mb-8">
@@ -16,14 +31,14 @@ export default function AlternatePage() {
             </div>
 
             {/* Main Headline with DaisyUI Typography */}
-            <h1 className="text-5xl font-bold mb-6 sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl font-bold mb-6 sm:text-6xl lg:text-7xl text-white drop-shadow-2xl">
               Launch Your{" "}
               <span className="text-[#F83600]">Brand Authority</span>
               {" "}in Minutes
             </h1>
 
             {/* Subheadline */}
-            <p className="py-6 text-lg leading-relaxed opacity-80">
+            <p className="py-6 text-lg leading-relaxed text-white/90 drop-shadow-lg">
               Get your AI-powered Personal Brand One-Pager + 3 Ready-to-Post Social Captions —
               completely free. Perfect for established experts ready to shine online.
             </p>
@@ -64,7 +79,7 @@ export default function AlternatePage() {
                   </div>
                 </div>
               </div>
-              <p className="text-sm font-medium opacity-60">
+              <p className="text-sm font-medium text-white/80 drop-shadow-md">
                 Join 500+ experts who launched their brand
               </p>
             </div>
@@ -120,6 +135,88 @@ export default function AlternatePage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works Section - DaisyUI Version */}
+      <div className="bg-base-100 py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">
+              How It Works
+            </h2>
+            <p className="text-lg opacity-70 max-w-2xl mx-auto">
+              Three simple steps to launch your authority brand in minutes
+            </p>
+          </div>
+
+          <div className="grid gap-12 md:grid-cols-3">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-content text-2xl font-bold shadow-lg">
+                1
+              </div>
+              <h3 className="mb-3 text-xl font-semibold">
+                Chat with AI
+              </h3>
+              <p className="opacity-70 leading-relaxed">
+                Have a friendly 5-minute conversation with our AI assistant about your expertise, experience, and ideal clients
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-content text-2xl font-bold shadow-lg">
+                2
+              </div>
+              <h3 className="mb-3 text-xl font-semibold">
+                Get Your Brand Pack
+              </h3>
+              <p className="opacity-70 leading-relaxed">
+                Receive your personalized Brand Authority One-Pager plus 3 ready-to-post social media captions instantly
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-content text-2xl font-bold shadow-lg">
+                3
+              </div>
+              <h3 className="mb-3 text-xl font-semibold">
+                Launch Your Authority
+              </h3>
+              <p className="opacity-70 leading-relaxed">
+                Download your one-pager, post your social content, and start attracting your ideal clients immediately
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom CTA Section - DaisyUI Hero */}
+      <div className="hero bg-gradient-to-br from-primary to-[#FF6B3D] py-24">
+        <div className="hero-content text-center">
+          <div className="max-w-3xl">
+            <h2 className="mb-6 text-4xl sm:text-5xl font-bold text-white">
+              Ready to Launch Your Brand?
+            </h2>
+            <p className="mb-8 text-lg text-white/90">
+              Join hundreds of experts who have already launched their authority brand.
+              Get your free AI-powered Brand Pack in just 10 minutes.
+            </p>
+            <button
+              className="btn btn-lg bg-white text-[#F83600] border-none hover:bg-base-200 hover:text-base-content"
+              onClick={() => alert('Chat interface coming soon!')}
+            >
+              Start Your Free Brand Pack Now
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+            <p className="mt-4 text-sm text-white/80">
+              No credit card required • 100% free • Takes less than 10 minutes
+            </p>
           </div>
         </div>
       </div>
