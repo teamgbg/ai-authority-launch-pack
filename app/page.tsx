@@ -19,7 +19,7 @@ export default function Home() {
               <source src="/videos/hero-background-compressed.mp4" type="video/mp4" />
             </video>
             {/* Video Overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-white" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-white" />
           </div>
 
           {/* Hero Content */}
@@ -28,7 +28,7 @@ export default function Home() {
               {/* Badge */}
               <div className="mb-8 inline-flex items-center rounded-full border border-[#F83600]/20 bg-[#F83600]/5 px-4 py-2">
               <span className="text-sm font-medium text-[#F83600]">
-                ✨ Your Personal Brand in 10 Minutes
+                ✨ Get Your Free Personal Brand One-Pager in 10 Minutes
               </span>
               </div>
 
@@ -41,8 +41,8 @@ export default function Home() {
 
               {/* Subheadline */}
               <p className="mx-auto mb-12 max-w-2xl text-lg leading-8 text-white/90 drop-shadow-lg sm:text-xl">
-              Get your AI-powered Personal Brand One-Pager + 3 Ready-to-Post Social Captions —
-              completely free. Perfect for established experts ready to shine online.
+              Get your free Personal Brand One-Pager — plus 3 ready-to-post social captions as a bonus.
+              Perfect for established experts ready to shine online.
               </p>
 
               {/* CTA Button */}
@@ -55,7 +55,7 @@ export default function Home() {
                 }}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Create My Brand Pack
+                  Get My Free Brand One-Pager
                   <svg
                     className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"
@@ -71,10 +71,6 @@ export default function Home() {
                   </svg>
                 </span>
                 <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#F83600] to-[#FF6B3D] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </button>
-
-              <button className="inline-flex h-14 items-center justify-center rounded-full border-2 border-[#1D2127]/20 bg-white px-8 font-semibold text-[#1D2127] transition-all duration-300 hover:border-[#F83600]/40 hover:bg-[#F83600]/5">
-                See How It Works
               </button>
               </div>
 
@@ -164,10 +160,10 @@ export default function Home() {
                   2
                 </div>
                 <h3 className="mb-3 text-xl font-semibold text-[#1D2127]">
-                  Get Your Brand Pack
+                  Get Your Brand One-Pager
                 </h3>
                 <p className="text-[#1D2127]/70 leading-relaxed">
-                  Receive your personalized Brand Authority One-Pager plus 3 ready-to-post social media captions instantly
+                  Receive your personalized Personal Brand One-Pager plus 3 ready-to-post social media captions as a bonus
                 </p>
               </div>
 
@@ -199,14 +195,14 @@ export default function Home() {
                 </h2>
                 <p className="mx-auto mb-8 max-w-2xl text-lg text-white/90">
                   Join hundreds of experts who have already launched their authority brand.
-                  Get your free AI-powered Brand Pack in just 10 minutes.
+                  Get your free Personal Brand One-Pager in just 10 minutes.
                 </p>
                 <button
                   className="group inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-semibold text-[#F83600] shadow-lg transition-all duration-300 hover:bg-[#1D2127] hover:text-white hover:scale-105 active:scale-95"
                   onClick={() => alert('Chat interface coming soon!')}
                 >
                   <span className="flex items-center gap-2">
-                    Start Your Free Brand Pack Now
+                    Get Your Free Brand One-Pager Now
                     <svg
                       className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
