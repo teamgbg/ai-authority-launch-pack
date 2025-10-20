@@ -1,6 +1,10 @@
 "use client";
 
+import { useState } from "react";
+import ChatInterface from "@/components/ChatInterface";
+
 export default function AlternatePage() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
   return (
     <div className="relative min-h-screen bg-black">
       {/* Hero Section with Video Background */}
@@ -49,10 +53,7 @@ export default function AlternatePage() {
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <button
                 className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-[#F83600] px-8 font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#E02F00] hover:shadow-xl hover:scale-105 active:scale-95"
-                onClick={() => {
-                  // TODO: Open chat interface
-                  alert('Chat interface coming soon!');
-                }}
+                onClick={() => setIsChatOpen(true)}
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Get My Free Brand One-Pager
@@ -199,7 +200,7 @@ export default function AlternatePage() {
                 </p>
                 <button
                   className="group inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-semibold text-[#F83600] shadow-lg transition-all duration-300 hover:bg-[#1D2127] hover:text-white hover:scale-105 active:scale-95"
-                  onClick={() => alert('Chat interface coming soon!')}
+                  onClick={() => setIsChatOpen(true)}
                 >
                   <span className="flex items-center gap-2">
                     Get Your Free Brand One-Pager Now
@@ -235,6 +236,9 @@ export default function AlternatePage() {
           </p>
         </div>
       </footer>
+
+      {/* Chat Interface */}
+      <ChatInterface isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>
   );
 }
