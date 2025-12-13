@@ -10,12 +10,14 @@ interface Message {
 interface ChatInterfaceProps {
   isOpen: boolean;
   onClose: () => void;
+  onEmailSent?: (email: string, name: string) => void;
 }
 
-export default function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
+export default function ChatInterface({ isOpen, onClose, onEmailSent }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Initial greeting when chat opens
@@ -24,7 +26,7 @@ export default function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
       setMessages([
         {
           role: "assistant",
-          content: "Hi there! I'm excited to help you create your Personal Brand One-Pager. Let's start with the basics - what's your name?",
+          content: "Hi there! I'm excited to help you create your Personal Brand One-Pager. To get started and provide you with the most personalized guidance, I'd love to know: What's your full name?",
         },
       ]);
     }
@@ -63,10 +65,70 @@ export default function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
       const data = await response.json();
 
       // Add assistant response to chat
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: data.message },
-      ]);
+      const newMessages = [
+        ...messages,
+        { role: "user" as const, content: userMessage },
+        { role: "assistant" as const, content: data.message },
+      ];
+
+      setMessages(newMessages);
+
+      // Check if conversation is complete
+      if (data.conversationComplete) {
+        setIsGenerating(true);
+        try {
+          // Generate the one-pager
+          const onePagerResponse = await fetch("/api/generate-onepager", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              messages: newMessages,
+            }),
+          });
+
+          if (!onePagerResponse.ok) {
+            throw new Error("Failed to generate one-pager");
+          }
+
+          const onePagerData = await onePagerResponse.json();
+
+          // Send via email
+          const emailResponse = await fetch("/api/send-onepager", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              messages: newMessages,
+              onePagerData: onePagerData.data,
+            }),
+          });
+
+          if (!emailResponse.ok) {
+            throw new Error("Failed to send email");
+          }
+
+          const emailData = await emailResponse.json();
+
+          // Call the callback with email info
+          if (onEmailSent && emailData.success) {
+            onEmailSent(emailData.email, emailData.name);
+          }
+        } catch (error) {
+          console.error("Error generating/sending one-pager:", error);
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "assistant",
+              content: "I've collected all your information, but there was an error sending your one-pager. Please try again.",
+            },
+          ]);
+        } finally {
+          setIsGenerating(false);
+        }
+      }
     } catch (error) {
       console.error("Error sending message:", error);
       setMessages((prev) => [
@@ -98,7 +160,7 @@ export default function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
         <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-[#F83600] to-[#FF6B3D] text-white">
           <div>
             <h2 className="text-xl font-bold">Create Your Brand One-Pager</h2>
-            <p className="text-sm text-white/90">Let's get to know you better</p>
+            <p className="text-sm text-white/90">Let&apos;s get to know you better</p>
           </div>
           <button
             onClick={onClose}
@@ -161,24 +223,35 @@ export default function ChatInterface({ isOpen, onClose }: ChatInterfaceProps) {
 
         {/* Input Area */}
         <div className="px-6 py-4 border-t border-gray-200">
-          <div className="flex gap-2">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type your message..."
-              disabled={isLoading}
-              className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#F83600] focus:ring-2 focus:ring-[#F83600]/20 disabled:bg-gray-100 disabled:cursor-not-allowed"
-            />
-            <button
-              onClick={sendMessage}
-              disabled={!input.trim() || isLoading}
-              className="px-6 py-3 bg-[#F83600] text-white rounded-full font-semibold hover:bg-[#E02F00] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
-            >
-              Send
-            </button>
-          </div>
+          {isGenerating ? (
+            <div className="flex items-center justify-center gap-3 py-3 text-[#F83600]">
+              <div className="flex space-x-1">
+                <div className="w-2 h-2 bg-[#F83600] rounded-full animate-bounce" />
+                <div className="w-2 h-2 bg-[#F83600] rounded-full animate-bounce delay-100" />
+                <div className="w-2 h-2 bg-[#F83600] rounded-full animate-bounce delay-200" />
+              </div>
+              <span className="font-semibold">Generating and sending your Brand One-Pager...</span>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Type your message..."
+                disabled={isLoading}
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:border-[#F83600] focus:ring-2 focus:ring-[#F83600]/20 disabled:bg-gray-100 disabled:cursor-not-allowed"
+              />
+              <button
+                onClick={sendMessage}
+                disabled={!input.trim() || isLoading}
+                className="px-6 py-3 bg-[#F83600] text-white rounded-full font-semibold hover:bg-[#E02F00] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+              >
+                Send
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

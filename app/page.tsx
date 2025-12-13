@@ -5,6 +5,13 @@ import ChatInterface from "@/components/ChatInterface";
 
 export default function Home() {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [emailSentTo, setEmailSentTo] = useState<{ email: string; name: string } | null>(null);
+
+  const handleEmailSent = (email: string, name: string) => {
+    setEmailSentTo({ email, name });
+    setIsChatOpen(false);
+  };
+
   return (
     <div className="relative min-h-screen bg-white">
       {/* Hero Section with Video Background */}
@@ -238,7 +245,90 @@ export default function Home() {
       </footer>
 
       {/* Chat Interface */}
-      <ChatInterface isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+      <ChatInterface
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+        onEmailSent={handleEmailSent}
+      />
+
+      {/* Email Success Modal */}
+      {emailSentTo && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm p-4">
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full p-8">
+              {/* Close Button */}
+              <button
+                onClick={() => setEmailSentTo(null)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 rounded-full p-2 hover:bg-gray-100 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Success Message */}
+              <div className="text-center">
+                {/* Email Icon */}
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
+                  <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+
+                <h2 className="text-3xl font-bold text-[#1D2127] mb-3">
+                  You&apos;re All Set!
+                </h2>
+                <p className="text-lg text-[#1D2127]/70 mb-6">
+                  Your Personal Brand One-Pager is being created and will be sent to:
+                </p>
+
+                <div className="bg-[#F83600]/10 border border-[#F83600]/20 rounded-xl p-4 mb-8">
+                  <p className="text-xl font-semibold text-[#F83600]">
+                    {emailSentTo.email}
+                  </p>
+                </div>
+
+                <div className="space-y-3 text-left bg-gray-50 rounded-xl p-6 mb-6">
+                  <h3 className="font-semibold text-[#1D2127] text-center mb-4">
+                    What&apos;s Next?
+                  </h3>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F83600] text-white flex items-center justify-center text-sm font-bold">
+                      1
+                    </div>
+                    <p className="text-[#1D2127]/80 text-sm">
+                      Check your email (including spam folder just in case)
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F83600] text-white flex items-center justify-center text-sm font-bold">
+                      2
+                    </div>
+                    <p className="text-[#1D2127]/80 text-sm">
+                      Download your Brand One-Pager PDF
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F83600] text-white flex items-center justify-center text-sm font-bold">
+                      3
+                    </div>
+                    <p className="text-[#1D2127]/80 text-sm">
+                      Start sharing your authority with your audience!
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setEmailSentTo(null)}
+                  className="px-8 py-3 bg-[#F83600] text-white rounded-full font-semibold hover:bg-[#E02F00] transition-colors shadow-lg"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
